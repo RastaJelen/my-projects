@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello from App Builder</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--bg);
+    transition: background-color 0.4s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .card {
+    background: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    max-width: 90%;
+    width: 360px;
+  }
+  .card h1 {
+    margin: 0 0 0.75rem;
+    font-size: 1.75rem;
+    color: #1f2937;
+  }
+  .card p {
+    margin: 0 0 1.5rem;
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  button {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+  }
+  button:hover {
+    transform: translateY(-1px);
+  }
+  button:active {
+    transform: translateY(0);
+  }
+  button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <h1>Hello from App Builder 👋</h1>
+    <p>This is a tiny test page. Click the button below to shuffle the background color.</p>
+    <button id="colorBtn" type="button">Change background color</button>
+  </main>
+
+  <script>
+    const colors = ["#f4f1ea", "#fde68a", "#bfdbfe", "#bbf7d0", "#fbcfe8", "#ddd6fe", "#fecaca"];
+    const button = document.getElementById("colorBtn");
+
+    button.addEventListener("click", () => {
+      const current = getComputedStyle(document.body).backgroundColor;
+      let next;
+      do {
+        next = colors[Math.floor(Math.random() * colors.length)];
+      } while (next === current);
+      document.body.style.backgroundColor = next;
+    });
+  </script>
+</body>
+</html>
